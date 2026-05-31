@@ -1,6 +1,6 @@
 cask "querly" do
   version "1.0.0"
-  sha256 "9fb92eb57cd292e8e358cbaf44fa9ab137b7d01a2d4e5961042a596ddbae42b5"
+  sha256 "8e633907967718002e21175572a1930b5bc5534f632df1d02f21ebd149289ce8"
 
   url "https://github.com/GamalAnwar/Querly/releases/download/v#{version}/Querly-#{version}.zip"
   name "Querly"
@@ -10,8 +10,11 @@ cask "querly" do
   app "Querly.app"
 
   caveats <<~EOS
-    Querly is ad-hoc signed (not yet notarized). On first launch macOS may block it.
-    To open: right-click Querly.app in /Applications and choose "Open", or run:
+    Querly is ad-hoc signed (not yet notarized), so macOS Gatekeeper will block
+    it on first launch. To allow it, run this once after installing:
+
       xattr -dr com.apple.quarantine "/Applications/Querly.app"
+
+    Then open Querly normally. (Notarization is on the roadmap.)
   EOS
 end
