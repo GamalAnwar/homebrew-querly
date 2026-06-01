@@ -9,12 +9,23 @@ cask "querly" do
 
   app "Querly.app"
 
+  # Querly is ad-hoc signed (not yet notarized). Strip the quarantine flag on
+  # install so Homebrew users don't hit the macOS Gatekeeper "could not verify"
+  # wall. The caveat below is a fallback note in case this is ever skipped.
+  postflight do
+    system_command "/usr/bin/xattr",
+                   args: ["-dr", "com.apple.quarantine", "#{appdir}/Querly.app"]
+  end
+
   caveats <<~EOS
-    Querly is ad-hoc signed (not yet notarized), so macOS Gatekeeper will block
-    it on first launch. To allow it, run this once after installing:
+    Querly is ad-hoc signed (not yet notarized). This cask clears the macOS
+    Gatekeeper quarantine flag automatically on install, so you can open Querly
+    normally.
+
+    If macOS still blocks it (e.g. after a manual download), run once:
 
       xattr -dr com.apple.quarantine "/Applications/Querly.app"
 
-    Then open Querly normally. (Notarization is on the roadmap.)
+    (Notarization is on the roadmap.)
   EOS
 end
