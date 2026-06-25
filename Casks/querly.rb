@@ -1,8 +1,8 @@
 cask "querly" do
-  version "1.4.3"
-  sha256 "05ddcd86bd035d5418f18fc811a578e50686ecf0049a59bfe7475c36797fc6eb"
+  version "1.4.4"
+  sha256 "786bee3c7856dc5e3514020da9f24a43109ea678dce19f66414acc71229ea513"
 
-  url "https://github.com/quietkit/Querly/releases/download/v#{version}/Querly-#{version}.zip"
+  url "https://github.com/quietkit/Querly/releases/download/v#{version}/Querly-v#{version}.zip"
   name "Querly"
   desc "Fast native macOS database client for MySQL, PostgreSQL, and SQLite"
   homepage "https://github.com/quietkit/Querly"
